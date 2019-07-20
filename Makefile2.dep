@@ -1,0 +1,3 @@
+# Makefile.dep created Wed Jul 17 17:16:03 PDT 2019
+testClient.o: testClient.cpp listmap.h xless.h xpair.h listmap.tcc debug.h util.h \
+ util.tcc
