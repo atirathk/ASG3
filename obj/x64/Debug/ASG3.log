@@ -6,9 +6,6 @@
   Compiling sources:
   debug.cpp
   main.cpp
-C:\Users\Atirath\source\repos\CMPS109\ASG3\main.cpp(55,21): warning : variable 'i' set but not used [-Wunused-but-set-variable]
-C:\Users\Atirath\source\repos\CMPS109\ASG3\main.cpp(55,21): warning :                 auto i = map.find(result[1]);
-C:\Users\Atirath\source\repos\CMPS109\ASG3\main.cpp(55,21): warning :                      ^
   testClient.cpp
   util.cpp
 C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,44): warning : conversion to 'int' from 'std::basic_string<char>::size_type {aka long unsigned int}' may alter its value [-Wconversion]

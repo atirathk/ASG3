@@ -11,11 +11,15 @@ using namespace std;
 #include "listmap.h"
 #include "xpair.h"
 
-// using str_str_map = listmap<string, string>;
-// using str_str_pair = str_str_map::value_type;
+ using str_str_map = listmap<string, string>;
+ using str_str_pair = str_str_map::value_type;
 
 int main(int argc, char** argv) {
-     cout << "hello";
+     str_str_map map;
+     str_str_pair pair("key", "value");
+     map.insert(pair);
+     str_str_map::iterator it = map.find("key");
+     cout << it->second << '\n';
      return 0;
 }
 
