@@ -39,32 +39,25 @@ listmap<Key, Value, Less>::~listmap() {
 template <typename Key, typename Value, class Less>
 typename listmap<Key, Value, Less>::iterator
 listmap<Key, Value, Less>::insert(const value_type& pair) {
-     //bool pairLess;
-     //iterator i = begin();
-     //if(empty() == false) {
-     //     for (i = i; i != end(); ++i) {
-     //          Less less;
-     //          pairLess = less(pair.first, i->first);
-     //          if (pairLess == true) {
-     //               value_type* ptr = &(*i);
-     //               ptr = new value_type(pair);
-     //               return i;
-     //          }
-     //     }
-     //}
-     //node* nodePtr = new node(i.where->prev, i.where->next, pair);
-     //node **nodePtr = &(i.where);
-     //*nodePtr = new node(i.where->prev, i.where->next, pair);
      iterator i = begin();
      node** curr = &(anchor()->next);
      Less less;
-     node *endNode = end().where;
+     node* endNode = end().where;
      while (*curr != endNode and less((*curr)->value.first, pair.first)) {
           curr = &(*curr)->next;
           ++i;
      }
      if (*curr == endNode or less(pair.first, (*curr)->value.first)) {
+          bool atEnd = *curr == endNode;
           *curr = new node((*curr)->next, (*curr)->prev, pair);
+          if (atEnd) {
+               endNode->prev = *curr;
+               (*curr)->next = endNode;
+          }
+          else {
+               (*curr)->prev->next = *curr;
+               (*curr)->next->prev = *curr;
+          }
           i = *curr;
      }
      return i;
@@ -92,12 +85,35 @@ listmap<Key, Value, Less>::find(const key_type& that) {
 template <typename Key, typename Value, class Less>
 typename listmap<Key, Value, Less>::iterator
 listmap<Key, Value, Less>::erase(iterator position) {
-     //iterator j;
-     //for(node i : Key) {
-     //     if(i == position) {
-     //          
-     //     }
-     //}
+     iterator i = begin();
+     node** curr = &(anchor()->next);
+     node* endNode = anchor();
+     while ((*curr) != endNode and *curr != position.where) {
+          curr = &(*curr)->next;
+          ++i;
+     }
+     if (*curr != endNode) {
+          ++i;
+          node* prevPtr = ((*curr)->prev);
+          node* nextPtr = (*curr)->next;
+          delete (*curr);
+          if (prevPtr == endNode) {
+               endNode->next = nextPtr;
+          }
+          else {
+               prevPtr->next = nextPtr;
+          }
+          if (nextPtr == endNode) {
+               endNode->prev = prevPtr;
+          }
+          else {
+               nextPtr->prev = prevPtr;
+          }
+          //(*curr)->prev->next = (*curr)->next;
+          //(*curr)->next->prev = (*curr)->prev;
+          //delete (*curr);
+     }
+     return i;
 }
 
 
@@ -127,19 +143,11 @@ listmap<Key, Value, Less>::iterator::operator->() {
      return &(where->value);
 }
 
-//template <typename Key, typename Value, class Less>
-//typename listmap<Key, Value, Less>::iterator&
-//listmap<Key, Value, Less>::iterator::operator=(value_type *that) {
-//     DEBUGF('l', where);
-//     value_type copy(that->first, that->second);
-//     where->value.first = copy.first;
-//}
-
 template <typename Key, typename Value, class Less>
 typename listmap<Key, Value, Less>::iterator&
 listmap<Key, Value, Less>::iterator::operator+(const int& that) {
      DEBUGF('l', where);
-     for(int i = 0; i < that; ++i) {
+     for (int i = 0; i < that; ++i) {
           this++;
      }
      return *this;

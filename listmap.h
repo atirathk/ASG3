@@ -29,7 +29,6 @@ public:
      class iterator;
      listmap() {};
      listmap(const listmap&);
-     //listmap& operator= (const listmap&);
      ~listmap();
      iterator insert(const value_type&);
      iterator find(const key_type&);

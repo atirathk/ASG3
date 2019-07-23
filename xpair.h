@@ -18,23 +18,18 @@ using namespace std;
 
 template <typename first_t, typename second_t>
 struct xpair {
-   first_t first{};
-   second_t second{};
-   xpair(){}
-   xpair (const first_t& first_, const second_t& second_):
-                first(first_), second(second_) {}
-   //xpair<first_t, second_t>& operator=(const xpair<first_t, second_t>& pair) const;
+     first_t first{};
+     second_t second{};
+     xpair() {}
+     xpair(const first_t& first_, const second_t& second_) :
+          first(first_), second(second_) {}
 };
 
 template <typename first_t, typename second_t>
 ostream& operator<< (ostream& out,
-                     const xpair<first_t,second_t>& pair) {
-   out << "{" << pair.first << "," << pair.second << "}";
-   return out;
+     const xpair<first_t, second_t>& pair) {
+     out << "{" << pair.first << "," << pair.second << "}";
+     return out;
 }
-//template <typename first_t, typename second_t>
-//xpair<first_t, second_t> & xpair<first_t, second_t>::operator= (const xpair<first_t, second_t>& pair) const{
-//     *this = xpair(pair.first, pair.second);
-//}
 #endif
 

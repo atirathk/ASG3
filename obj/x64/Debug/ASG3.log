@@ -1,4 +1,5 @@
-﻿  Validating sources
+﻿  Cleaning remote project directory
+  Validating sources
   Copying sources remotely to 'unix.ucsc.edu'
   Validating architecture
   Validating architecture
@@ -8,8 +9,8 @@
   main.cpp
   testClient.cpp
   util.cpp
-C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,44): warning : conversion to 'int' from 'std::basic_string<char>::size_type {aka long unsigned int}' may alter its value [-Wconversion]
-C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,44): warning :     int slashpos = argv0.find_last_of ('/') + 1;
-C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,44): warning :                                             ^
+C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,45): warning : conversion to 'int' from 'std::basic_string<char>::size_type {aka long unsigned int}' may alter its value [-Wconversion]
+C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,45): warning :       int slashpos = argv0.find_last_of('/') + 1;
+C:\Users\Atirath\source\repos\CMPS109\ASG3\util.cpp(24,45): warning :                                              ^
   Linking objects
   ASG3.vcxproj -> C:\Users\Atirath\source\repos\CMPS109\ASG3\bin\x64\Debug\ASG3.out

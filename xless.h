@@ -9,9 +9,9 @@
 
 template <typename Type>
 struct xless {
-   bool operator() (const Type& left, const Type& right) const {
-      return left < right;
-   }
+     bool operator() (const Type& left, const Type& right) const {
+          return left < right;
+     }
 };
 
 #endif
